@@ -34,7 +34,7 @@ console.log(config.var.www.noopath.folder.calculation) //var/www/noopath/folder/
 
 ## Directory structure:
 
-```
+```php
 |- var
     |- www
         |- noopath
@@ -56,7 +56,7 @@ console.log(config.var.www.noopath.folder.calculation) //var/www/noopath/folder/
 ```
 ## Output:
 
-```javascipt
+```javascript
 {
   var: {
     www: {
