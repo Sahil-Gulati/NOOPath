@@ -1,5 +1,5 @@
 var Noopath = require("./Noopath")
 Noopath.setPath("/var/www/node/noopath")
 Noopath.setIgnorePaths(["/var/www/node/noopath/nbproject/"])
-console.log(Noopath.getConfig().var.www.node.noopath.test)
-console.log(Noopath)
+Noopath.setIgnoreExtensions(["json"])
+console.log(Noopath.getConfig().var.www.node)

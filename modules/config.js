@@ -23,7 +23,7 @@ class Config extends Misc {
             }
         }
     }
-    ignoreExtensions(array){
+    setIgnoreExtensions(array){
         for(var extension_index in array){
             this.ignoreExtensions.push(array[extension_index])
         }
