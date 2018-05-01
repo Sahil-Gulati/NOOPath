@@ -22,6 +22,8 @@ noopath.setIgnoreExtensions(["json"]) //Adds `json` to ignore extensions, `js` i
 
 const config = noopath.getConfig() //get file-structure in an object
 console.log(config)
+console.log(config.var.www.noopath.test) //var/www/noopath/test.js
+console.log(config.var.www.noopath.folder.calculation) //var/www/noopath/folder/calculation.js
 ```
 
 ### Directory structure
