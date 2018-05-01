@@ -11,6 +11,8 @@ class Config extends Misc {
         this.ignoreExtensions = ["js"];
     }
     setPath(path){
+        var pattern = new RegExp("/{1,}$");
+        path = path.replace(pattern,"")
         this.path = path;
     }
     setIgnorePaths(paths){
