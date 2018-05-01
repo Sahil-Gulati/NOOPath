@@ -1,5 +1,5 @@
 # NOOPath
-A node library which takes filepath and convert its filesystem in an object, So you can access paths with dot.separated.structure .
+A node library which takes filepath and convert its filesystem into an object, So you can access paths with dot.separated.structure . This library will take away the pain of writing paths as string, by replacing it will dot separated notation like `noopath.var.www.path.to.project`.
 
 
 ## Installation
