@@ -14,7 +14,7 @@ const noopath = require('noopath');
 noopath.setPath("/var/www/noopath") //set path to folder
 
 //[OPTIONAL]
-noopath.setIgnorePath([
+noopath.setIgnorePaths([
                     "/var/www/noopath/node_modules/",
                     "/var/www/noopath/.git"
                     ]); //setting the path which you want to ignore in creation of object
@@ -71,3 +71,15 @@ console.log(config.var.www.noopath.folder.calculation) //var/www/noopath/folder/
   }
 }
 ```
+### Documentation
+
+#### Noopath.setPath(path)
+```
+This function will accept path as string. make sure this should be absolute path.
+```
+
+#### Noopath.setIgnorePaths(paths[])
+```
+This function will accept array of paths where each path should be absolute path(String). This function will add paths which you want to ignore while the creation of config object. Less paths less memory space.
+```
+
