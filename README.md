@@ -11,10 +11,15 @@ A node library which takes filepath and convert its filesystem into an object, S
 ```javascript
 const noopath = require('noopath');
 
-//[REQUIRED]
+/**
+ *[REQUIRED]
+ */
 noopath.setPath("/var/www/noopath") //set path to folder
 
-//[OPTIONAL]
+
+/**
+ *[OPTIONAL]
+ */
 noopath.setIgnorePaths([
                     "/var/www/noopath/node_modules/",
                     "/var/www/noopath/.git"
