@@ -1,0 +1,19 @@
+{
+  "name": "noopath",
+  "version": "1.0.0",
+  "description": "A node library which takes filepath and convert its filesystem in an object, So you can access paths with dot.separated.structure .",
+  "main": "Noopath.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sahil-Gulati/noopath.git"
+  },
+  "author": "Sahil Gulati <sahil.gulati1991@outlook.com>",
+  "license": "",
+  "bugs": {
+    "url": "https://github.com/Sahil-Gulati/noopath/issues"
+  },
+  "homepage": "https://github.com/Sahil-Gulati/noopath#readme"
+}
