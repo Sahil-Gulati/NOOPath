@@ -7,13 +7,19 @@ A node library which takes filepath and convert its filesystem into an object, S
 
 
 ## Usage
+
 ```javascript
 const noopath = require('noopath');
 
-//[REQUIRED]
+/**
+ *[REQUIRED]
+ */
 noopath.setPath("/var/www/noopath") //set path to folder
 
-//[OPTIONAL]
+
+/**
+ *[OPTIONAL]
+ */
 noopath.setIgnorePaths([
                     "/var/www/noopath/node_modules/",
                     "/var/www/noopath/.git"
@@ -26,8 +32,9 @@ console.log(config.var.www.noopath.test) //var/www/noopath/test.js
 console.log(config.var.www.noopath.folder.calculation) //var/www/noopath/folder/calculation.js
 ```
 
-### Directory structure
-```
+## Directory structure:
+
+```php
 |- var
     |- www
         |- noopath
@@ -47,9 +54,9 @@ console.log(config.var.www.noopath.folder.calculation) //var/www/noopath/folder/
                   |- ...
             
 ```
-## Output
+## Output:
 
-```javascipt
+```javascript
 {
   var: {
     www: {
@@ -71,7 +78,7 @@ console.log(config.var.www.noopath.folder.calculation) //var/www/noopath/folder/
   }
 }
 ```
-### Documentation
+## Documentation
 
 #### Noopath.setPath(path)
 ```
@@ -83,3 +90,7 @@ This function will accept path as string. make sure this should be absolute path
 This function will accept array of paths where each path should be absolute path(String). This function will add paths which you want to ignore while the creation of config object. Less paths less memory space.
 ```
 
+#### Noopath.setIgnoreExtensions(extension[])
+```
+This function will accept array of extensions where each extension should contain extension. Note: It should not contain `.` Use `extension` not `.extension`. This function will not allow module to add extensions to keys of config object.
+```
