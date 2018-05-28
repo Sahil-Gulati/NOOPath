@@ -2,8 +2,8 @@
  * This file will handle config relate setters
  * Sahil Gulati<sahil.gulati1991@outlook.com>
  */
-const Misc = require("./misc")
-class Config extends Misc {
+const FileMisc = require("./FileMisc")
+class Config extends FileMisc {
     constructor(){
         super()
         this.path = "";
