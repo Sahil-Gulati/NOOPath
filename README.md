@@ -96,7 +96,7 @@ This function will accept array of paths where each path should be absolute path
 
 #### Noopath.setIgnoreExtensions(extension[])
 ```
-This function will accept array of extensions where each extension should contain extension. Note: It should not contain `.` Use `extension` not `.extension`. This function will not allow module to add extensions to keys of config object.
+This function will accept array of strings where each string should contain extension. Note: It should not contain `.` Use `extension` not `.extension`. This function will not allow module to add extensions to keys of config object.
 ```
 
 #### Noopath.getFromConfig(string)
