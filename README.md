@@ -30,6 +30,9 @@ const config = noopath.getConfig() //get file-structure in an object
 console.log(config)
 console.log(config.var.www.noopath.test) //var/www/noopath/test.js
 console.log(config.var.www.noopath.folder.calculation) //var/www/noopath/folder/calculation.js
+
+var filepath = noopath.getFromConfig("var.www.noopath.folder.calculation")
+console.log(filepath) //var/www/noopath/folder/calculation.js
 ```
 
 ## Directory structure:
@@ -56,6 +59,7 @@ console.log(config.var.www.noopath.folder.calculation) //var/www/noopath/folder/
 ```
 ## Output:
 
+```console.log(config)```
 ```javascript
 {
   var: {
@@ -93,4 +97,14 @@ This function will accept array of paths where each path should be absolute path
 #### Noopath.setIgnoreExtensions(extension[])
 ```
 This function will accept array of extensions where each extension should contain extension. Note: It should not contain `.` Use `extension` not `.extension`. This function will not allow module to add extensions to keys of config object.
+```
+
+#### Noopath.getFromConfig(string)
+```
+This function will accept object oriented string path and return Object/String of path(s) on the basis of string used as input to the function.
+```
+
+#### Noopath.getConfig()
+```
+This function will return file system in the form of an object.
 ```
