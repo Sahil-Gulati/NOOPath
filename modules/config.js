@@ -21,7 +21,9 @@ class Config extends FileMisc {
             if(this.isDirectory(path)){
                var pattern = new RegExp("/{1,}$");
                path = path.replace(pattern,"")
-               this.ignorePaths.push(path) 
+               this.ignorePaths.push(path);
+            } else {
+               this.ignorePaths.push(path); 
             }
         }
     }
