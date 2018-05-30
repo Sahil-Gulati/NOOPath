@@ -61,12 +61,11 @@ class Misc {
      */
     static getKeysFromObject(configObject, filename, keys){
         if(filename in configObject && !Misc.isObject(configObject[filename])){
-            return configObject[filename];
+            keys.push(configObject[filename]);
         } else {
             for (var key_filename in configObject) {
                 if(Misc.isObject(configObject[key_filename])){
-                    var result = Misc.getKeysFromObject(configObject[key_filename],filename,keys);
-                    if(result){ keys = keys.concat(result); }
+                    var keys = Misc.getKeysFromObject(configObject[key_filename],filename,keys);
                 }
             }
         }
