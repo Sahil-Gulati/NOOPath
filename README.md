@@ -5,49 +5,6 @@ NOOPath is Node Object Oriented Path. A node library which takes filepath and co
 ## Installation
 `npm install noopath`
 
-
-## Usage
-
-```javascript
-const noopath = require('noopath');
-
-/**
- *[REQUIRED]
- */
-noopath.setPath("/var/www/noopath") //set path to folder
-
-
-/**
- *[OPTIONAL]
- */
-noopath.setIgnorePaths([
-                    "/var/www/noopath/node_modules/",
-                    "/var/www/noopath/.git"
-                    ]); //setting the path which you want to ignore in creation of object
-noopath.setIgnoreExtensions(["json"]) //Adds `json` to ignore extensions, `js` is already there.
-
-const config = noopath.getConfig() //get file-structure in an object
-console.log(config)
-console.log(config.var.www.noopath.test) //var/www/noopath/test.js
-console.log(config.var.www.noopath.folder.calculation) //var/www/noopath/folder/calculation.js
-
-var filepath = noopath.getFromConfig("var.www.noopath.folder.calculation")
-console.log(filepath) //var/www/noopath/folder/calculation.js
-
-console.log(noopath.load("x")) // /var/www/noopath/folder/another_folder/x.json
-
-/**
- * It will first get all keys with name config and filter out the required one.
- * Filter out between two files /var/www/noopath/folder/another_folder/config.json,  /var/www/noopath/config.js
- */
-console.log(noopath.loadByFilter("config", "config\.json$")) // /var/www/noopath/folder/another_folder/config.json
-
-/**
- * It will return all files gathered for filtering out.
- */
-console.log(noopath.getAll("config")) // ["/var/www/noopath/folder/another_folder/config.json",  "/var/www/noopath/config.js"]
-```
-
 ## Directory structure:
 
 ```php
@@ -72,6 +29,51 @@ console.log(noopath.getAll("config")) // ["/var/www/noopath/folder/another_folde
                   |- ...
             
 ```
+
+## Usage
+
+```javascript
+const noopath = require('noopath');
+
+/**
+ *[REQUIRED]
+ */
+noopath.setPath("/var/www/noopath") //set path to folder
+
+
+/**
+ *[OPTIONAL]
+ */
+noopath.setIgnorePaths([
+                    "/var/www/noopath/node_modules/",
+                    "/var/www/noopath/.git"
+                    ]); //setting the path which you want to ignore in creation of object
+noopath.setIgnoreExtensions(["json"]) //Adds `json` to ignore extensions, `js` is already there.
+
+const config = noopath.getConfig() //get file-structure in an object
+
+console.log(config.var.www.noopath.test) //var/www/noopath/test.js
+console.log(config.var.www.noopath.folder.calculation) //var/www/noopath/folder/calculation.js
+
+var filepath = noopath.getFromConfig("var.www.noopath.folder.calculation")
+console.log(filepath) //var/www/noopath/folder/calculation.js
+
+console.log(noopath.load("x")) // /var/www/noopath/folder/another_folder/x.json
+
+/**
+ * It will first get all keys with name config and filter out the required one.
+ * Filter out between two files /var/www/noopath/folder/another_folder/config.json,  /var/www/noopath/config.js
+ */
+console.log(noopath.loadByFilter("config", "config\.json$")) // /var/www/noopath/folder/another_folder/config.json
+
+/**
+ * It will return all files gathered for filtering out.
+ */
+console.log(noopath.getAll("config")) // ["/var/www/noopath/folder/another_folder/config.json",  "/var/www/noopath/config.js"]
+
+console.log(config)
+```
+
 ## Output:
 
 ```console.log(config)```
