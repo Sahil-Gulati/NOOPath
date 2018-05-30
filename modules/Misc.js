@@ -59,7 +59,6 @@ class Misc {
      * which encounters during recursive looping.
      */
     static getKeysFromObject(configObject, filename, keys){
-        var keys = keys || [];
         if(filename in configObject && !Misc.isObject(configObject[filename])){
             return configObject[filename];
         } else {
