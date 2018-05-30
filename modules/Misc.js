@@ -17,6 +17,12 @@ class Misc {
         }
         return false;
     }
+    static isObject(object){
+        if(object.constructor === Object){
+            return true;
+        }
+        return false;
+    }
     static getPathFromObject(configObject, noopath_string){
         if(Misc.isValidOOPPath(noopath_string)){
             var fragments = noopath_string.split(".")
@@ -25,12 +31,46 @@ class Misc {
                 if(configObject[fragment]){
                     configObject = configObject[fragment]
                 } else {
-                    return false
+                    return false;
                 }
             }
-            return configObject
+            return configObject;
         }
         return false;
     }
+    /**
+     * This function will return first encountered key,
+     * which is not an object.
+     */
+    static getKeyFromObject(configObject, filename){
+        if(filename in configObject && !Misc.isObject(configObject[filename])){
+            return configObject[filename];
+        } else {
+            for (var key_filename in configObject) {
+                if(Misc.isObject(configObject[key_filename])){
+                    var result = Misc.getKeyFromObject(configObject[key_filename],filename)
+                    if(result){ return result; }
+                }
+            }
+        }
+    }
+    /**
+     * This function will return array of all key,
+     * which encounters during recursive looping.
+     */
+    static getKeysFromObject(configObject, filename, keys){
+        var keys = keys || [];
+        if(filename in configObject && !Misc.isObject(configObject[filename])){
+            return configObject[filename];
+        } else {
+            for (var key_filename in configObject) {
+                if(Misc.isObject(configObject[key_filename])){
+                    var result = Misc.getKeysFromObject(configObject[key_filename],filename,keys);
+                    if(result){ keys = keys.concat(result); }
+                }
+            }
+        }
+        return keys;
+    }
 }
-module.exports = Misc
+module.exports = Misc;
