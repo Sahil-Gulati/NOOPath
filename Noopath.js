@@ -3,7 +3,7 @@
  */
 const Maker = require("./modules/maker");
 const Config = require("./modules/config");
-const Traverser = require("./modules/traverser");
+const Traverser = require("./modules/Traverser");
 const Misc = require("./modules/Misc");
 
 class Noopath extends Config {
@@ -32,6 +32,14 @@ class Noopath extends Config {
     getFromConfig(oop_string){
         var config = this.__getConfig();
         return Misc.getPathFromObject(config,oop_string)
+    }
+    load(filename){
+        var config = this.__getConfig();
+        return Misc.getKeyFromObject(config,filename);
+    }
+    getAll(filename){
+        var config = this.__getConfig();
+        return Misc.getKeysFromObject(config,filename,[]);
     }
 }
 module.exports = new Noopath;
