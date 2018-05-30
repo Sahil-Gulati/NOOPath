@@ -37,6 +37,17 @@ class Noopath extends Config {
         var config = this.__getConfig();
         return Misc.getKeyFromObject(config,filename);
     }
+    loadByFilter(filename,filter_expression){
+        var filenames = this.getAll(filename);
+        for (var file_index in filenames) {
+            var requiredFilname = filenames[file_index];
+            var pattern = new RegExp(filter_expression);
+            if(requiredFilname.search(pattern)!== -1){
+                return requiredFilname;
+            }
+        }
+        return false;
+    }
     getAll(filename){
         var config = this.__getConfig();
         return Misc.getKeysFromObject(config,filename,[]);
