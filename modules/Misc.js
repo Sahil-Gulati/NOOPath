@@ -52,6 +52,7 @@ class Misc {
                     if(result){ return result; }
                 }
             }
+            return false;
         }
     }
     /**
