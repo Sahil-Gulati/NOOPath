@@ -110,7 +110,7 @@ This function will accept path as string. make sure this should be absolute path
 
 #### Noopath.setIgnorePaths(paths[])
 ```
-This function will accept array of paths where each path should be absolute path(String). This function will add paths which you want to ignore while the creation of config object. This can be either directory or file. Note: Less paths less memory space.
+This function will accept array of paths where each path should be absolute path(String). It will add paths which you want to ignore while the creation of config object. This can be either directory or file. Note: Less paths less memory space.
 ```
 
 #### Noopath.setIgnoreExtensions(extension[])
