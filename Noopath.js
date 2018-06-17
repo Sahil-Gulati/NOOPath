@@ -39,18 +39,15 @@ class Noopath extends Config {
     }
     loadByFilter(filename,filter_expression){
         var filenames = this.getAll(filename);
-        for (var file_index in filenames) {
-            var requiredFilname = filenames[file_index];
-            var pattern = new RegExp(filter_expression);
-            if(requiredFilname.search(pattern)!== -1){
-                return requiredFilname;
-            }
-        }
-        return false;
+        return Misc.getFirstMatching(filenames,filter_expression)
     }
     getAll(filename){
         var config = this.__getConfig();
         return Misc.getKeysFromObject(config,filename,[]);
+    }
+    loadOrElse(...filenames){
+    	var config = this.__getConfig();
+    	return Misc.getFirstExistingKeyFromObject(config, filenames)
     }
 }
 module.exports = new Noopath;
