@@ -71,5 +71,29 @@ class Misc {
         }
         return keys;
     }
+    /**
+     * This function will first value from the array,
+     * matching with regex_expression.
+     */
+    static getFirstMatching(filenames, regex_string){
+        for (var file_index in filenames) {
+            var requiredFilname = filenames[file_index];
+            var pattern = new RegExp(regex_string);
+            if(requiredFilname.search(pattern)!== -1){
+                return requiredFilname;
+            }
+        }
+        return false;
+    }
+    static getFirstExistingKeyFromObject(object,files){
+        for(var file_index in files){
+            var filename = files[file_index]
+            var filepath = Misc.getKeyFromObject(object,filename)
+            if(filepath!= false){
+                return filepath
+            }
+        }
+        return false
+    }
 }
 module.exports = Misc;
