@@ -1,7 +1,13 @@
 /**
+ * This class will give miscellaneous functions to work with.
  * Sahil Gulati <sahilgulati@paisabazaar.com>
  */
 class Misc {
+    /**
+     * This function will check wether a oop_string(Eg. var.www.x.y) is valid or not.
+     * @param {String} oop_string
+     * @return {Boolean}
+     */
     static isValidOOPPath(oop_string){
         var fragments = oop_string.split(".")
         var filtered_fragments = fragments.filter(function(fragment){
@@ -25,7 +31,7 @@ class Misc {
     }
     static getPathFromObject(configObject, noopath_string){
         if(Misc.isValidOOPPath(noopath_string)){
-            var fragments = noopath_string.split(".")
+            var fragments = noopath_string.split(".");
             for(var key_index in fragments){
                 var fragment = fragments[key_index];
                 if(configObject[fragment]){
@@ -34,6 +40,10 @@ class Misc {
                     return false;
                 }
             }
+            Misc.console(
+                ["OOP_String", noopath_string],
+                ["Filepath",configObject]
+            );
             return configObject;
         }
         return false;
@@ -44,6 +54,10 @@ class Misc {
      */
     static getKeyFromObject(configObject, filename){
         if(filename in configObject && !Misc.isObject(configObject[filename])){
+            Misc.console(
+                ['Filename', filename], 
+                ['Filepath', configObject[filename]]
+            );
             return configObject[filename];
         } else {
             for (var key_filename in configObject) {
@@ -70,6 +84,31 @@ class Misc {
             }
         }
         return keys;
+    }
+    static getFirstMatching(array, regex_string){
+        for (var i in array) {
+            var requiredFilname = array[i];
+            var pattern = new RegExp(regex_string);
+            if(requiredFilname.search(pattern)!== -1){
+                var filename = requiredFilname
+                        .split("/").pop() /** Last Element **/
+                        .split(".").shift() /** First Element **/
+                Misc.console( 
+                    ["Filename",filename],
+                    ["Regex",regex_string],
+                    ["Filepath",requiredFilname]
+                );
+                return requiredFilname;
+            }
+        }
+    }
+    static console(...logs){
+        if(Misc.log){
+            logs = logs.map(function(log_array){
+                return log_array.join(": '");
+            });
+            console.log(logs.join("' | ")+"'");
+        }
     }
 }
 module.exports = Misc;
