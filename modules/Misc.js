@@ -52,8 +52,14 @@ class Misc {
      * This function will return first encountered key,
      * which is not an object.
      */
-    static getKeyFromObject(configObject, filename){
+    static getKeyFromObject(configObject, filename, object = false){
         if(filename in configObject && !Misc.isObject(configObject[filename])){
+            Misc.console(
+                ['Filename', filename], 
+                ['Filepath', configObject[filename]]
+            );
+            return configObject[filename];
+        } else if(filename in configObject && Misc.isObject(configObject[filename]) && object === true){
             Misc.console(
                 ['Filename', filename], 
                 ['Filepath', configObject[filename]]
@@ -62,7 +68,7 @@ class Misc {
         } else {
             for (var key_filename in configObject) {
                 if(Misc.isObject(configObject[key_filename])){
-                    var result = Misc.getKeyFromObject(configObject[key_filename],filename)
+                    var result = Misc.getKeyFromObject(configObject[key_filename],filename, object);
                     if(result){ return result; }
                 }
             }
