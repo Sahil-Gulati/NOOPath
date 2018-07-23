@@ -1,37 +1,40 @@
 /**
+ * This class will serve as a main interface to the client.
  * Sahil Gulati<sahil.gulati1991@outlook.com>
  */
+const Misc = require("./modules/Misc");
 const Maker = require("./modules/maker");
 const Config = require("./modules/config");
+const Holder = require("./modules/Holder");
 const Traverser = require("./modules/Traverser");
-const Misc = require("./modules/Misc");
 
 class Noopath extends Config {
     constructor(){
         super();
         this.maker = new Maker(this);
-        this.config = {}
+        this.holder = Holder;
         this.traverser = new Traverser(this);
+        this.log = false;
     }
     __generateConfig(){
         this.traverser.__traverser(this.path);
         this.maker.setPaths(
             this.traverser.list
         );
-        this.config = this.maker.make();
+        this.holder.push("config", this.maker.make());
     }
     __getConfig(){
-        if(Misc.isEmptyObject(this.config)){
+        if(Misc.isEmptyObject(this.holder.safeGet("config"))){
             this.__generateConfig();
         }
-        return this.config;
+        return this.holder.safeGet("config");
     }
     getConfig(){
         return this.__getConfig();
     }
     getFromConfig(oop_string){
         var config = this.__getConfig();
-        return Misc.getPathFromObject(config,oop_string)
+        return Misc.getPathFromObject(config,oop_string);
     }
     load(filename){
         var config = this.__getConfig();
@@ -39,18 +42,17 @@ class Noopath extends Config {
     }
     loadByFilter(filename,filter_expression){
         var filenames = this.getAll(filename);
-        for (var file_index in filenames) {
-            var requiredFilname = filenames[file_index];
-            var pattern = new RegExp(filter_expression);
-            if(requiredFilname.search(pattern)!== -1){
-                return requiredFilname;
-            }
-        }
-        return false;
+        return Misc.getFirstMatching(filenames, filter_expression, filename);
     }
     getAll(filename){
         var config = this.__getConfig();
         return Misc.getKeysFromObject(config,filename,[]);
+    }
+    debug(debug){
+        Misc.log = debug;
+    }
+    clear(){
+        Holder.clear();
     }
 }
 module.exports = new Noopath;
