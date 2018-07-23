@@ -44,6 +44,10 @@ class Noopath extends Config {
         var filenames = this.getAll(filename);
         return Misc.getFirstMatching(filenames, filter_expression, filename);
     }
+    loadOrElse(...filenames){
+    	var config = this.__getConfig();
+    	return Misc.getFirstExistingKeyFromObject(config, filenames);
+    }
     getAll(filename){
         var config = this.__getConfig();
         return Misc.getKeysFromObject(config,filename,[]);
@@ -54,5 +58,6 @@ class Noopath extends Config {
     clear(){
         Holder.clear();
     }
+
 }
 module.exports = new Noopath;

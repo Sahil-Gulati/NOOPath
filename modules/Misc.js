@@ -85,6 +85,10 @@ class Misc {
         }
         return keys;
     }
+    /**
+     * This function will first value from the array,
+     * matching with regex_expression.
+     */
     static getFirstMatching(array, regex_string){
         for (var i in array) {
             var requiredFilname = array[i];
@@ -101,6 +105,17 @@ class Misc {
                 return requiredFilname;
             }
         }
+        return false;
+    }
+    static getFirstExistingKeyFromObject(object,files){
+        for(var file_index in files){
+            var filename = files[file_index]
+            var filepath = Misc.getKeyFromObject(object,filename)
+            if(filepath !== false){
+                return filepath;
+            }
+        }
+        return false
     }
     static console(...logs){
         if(Misc.log){

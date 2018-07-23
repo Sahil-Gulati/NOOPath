@@ -67,6 +67,13 @@ console.log(noopath.load("x")) // /var/www/noopath/folder/another_folder/x.json
 console.log(noopath.loadByFilter("config", "config\.json$")) // /var/www/noopath/folder/another_folder/config.json
 
 /**
+ * Note: Can accept variable no. of arguments.
+ * Existence priority loading, this will check the existence of each file and return, 
+ * with the first, existing filename. As config.staging, development and production does not exists it returns with config
+ */
+console.log(noopath.loadOrElse("config.staging","config.development","config.production","config"))// /var/www/noopath/folder/another_folder/config.json
+
+/**
  * It will return all files gathered for filtering out.
  */
 console.log(noopath.getAll("config")) // ["/var/www/noopath/folder/another_folder/config.json",  "/var/www/noopath/config.js"]
@@ -132,9 +139,15 @@ This function will return file system in the form of an object.
 ```
 This function will return complete filepath by digging inside complete config object. Input parameter filename should be an existing key, else it give false. Note: In case on multiple keys, It will return first encountered key within the object. It will work perfectly like a loader in case of unique filename.
 ```
+
 #### Noopath.loadByFilter(filename, filter_regex_string)
 ```
 This function will return complete filepath by digging inside complete config object, but difference here is, It will gather all files with that name and return first matched filepath.
+```
+
+#### Noopath.loadOrElse(...filenames)
+```
+This function will return first existing filename. We can pass variable no. of parameters to these functions. This function will sequencially check for each argument(filename).
 ```
 
 #### Noopath.getAll(filename)
