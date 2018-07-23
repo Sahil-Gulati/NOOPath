@@ -48,6 +48,13 @@ class Noopath extends Config {
     	var config = this.__getConfig();
     	return Misc.getFirstExistingKeyFromObject(config, filenames);
     }
+    loadFromFolder(folder, filename){
+        var config = this.__getConfig();
+        return Misc.getKeyFromObject( 
+            Misc.getKeyFromObject(config,folder,true) || {},
+            filename
+        );
+    }
     getAll(filename){
         var config = this.__getConfig();
         return Misc.getKeysFromObject(config,filename,[]);
