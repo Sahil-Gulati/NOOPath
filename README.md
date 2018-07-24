@@ -154,4 +154,4 @@ console.log(config)
 ```
 ## Documentation
 
-Take a tour of [API Documentation](https://github.com/Sahil-Gulati/NOOPath/wiki/Api-documentation)
+Take a tour of [API Documentation](https://github.com/Sahil-Gulati/NOOPath/wiki/Api-documentation-of-1.x.x)
