@@ -97,13 +97,31 @@ console.log(noopath.loadByFilter("config", "config\.json$"))
 console.log(noopath.loadOrElse("config.staging","config.development","config.production","config"))
 //Output: /var/www/noopath/folder/another_folder/config.json
 
+/**
+ * This function will retrieve filepath on the basis of filename or parent foldername. 
+ * Note: Parent folder can be parent or grand parent or grand grand parent or else.
+ */
+console.log(noopath.loadFromFolder("noopath", "something"))
+//Output: /var/www/noopath/folder/something.js
+
+
+/**
+ * This function will help you print console log for files loaded, filtered or retrieved through loading functions.
+ */
+console.log(noopath.debug(true))
 
 /**
  * It will return all files gathered for filtering out.
  */
 console.log(noopath.getAll("config")) 
-//Output: ["/var/www/noopath/folder/another_folder/config.json",  "/var/www/noopath/config.js"]
+//Output: ["/var/www/noopath/folder/another_folder/config.json",  "/var/www/nooath/config.js"]
 
+/**
+ * By default noopath will retrieve folder structure object and keep on retrieving filepaths using the same object.
+ * In case of re-gathering file structure information, you can clear previously obtained object.
+ */
+ noopath.clear();
+ 
 console.log(config)
 ```
 
@@ -136,4 +154,4 @@ console.log(config)
 ```
 ## Documentation
 
-Take a look at [API Documentation](https://github.com/Sahil-Gulati/NOOPath/wiki/Api-documentation)
+Take a tour of [API Documentation](https://github.com/Sahil-Gulati/NOOPath/wiki/Api-documentation)
