@@ -136,47 +136,4 @@ console.log(config)
 ```
 ## Documentation
 
-#### Noopath.setPath(path)
-```
-This function will accept path as string. make sure this should be absolute path.
-```
-
-#### Noopath.setIgnorePaths(paths[])
-```
-This function will accept array of paths where each path should be absolute path(String). It will add paths which you want to ignore while the creation of config object. This can be either directory or file. Note: Less paths less memory space.
-```
-
-#### Noopath.setIgnoreExtensions(extension[])
-```
-This function will accept array of strings where each string should contain extension. Note: It should not contain `.` Use `extension` not `.extension`. This function will not allow module to add extensions to keys of config object.
-```
-
-#### Noopath.getFromConfig(string)
-```
-This function will accept object oriented string path and return Object/String of path(s) on the basis of string used as input to the function.
-```
-
-#### Noopath.getConfig()
-```
-This function will return file system in the form of an object.
-```
-
-#### Noopath.load(filename)
-```
-This function will return complete filepath by digging inside complete config object. Input parameter filename should be an existing key, else it give false. Note: In case on multiple keys, It will return first encountered key within the object. It will work perfectly like a loader in case of unique filename.
-```
-
-#### Noopath.loadByFilter(filename, filter_regex_string)
-```
-This function will return complete filepath by digging inside complete config object, but difference here is, It will gather all files with that name and return first matched filepath.
-```
-
-#### Noopath.loadOrElse(...filenames)
-```
-This function will return first existing filename. We can pass variable no. of parameters to these functions. This function will sequencially check for each argument(filename).
-```
-
-#### Noopath.getAll(filename)
-```
-It will return all filepaths by filename which can be gathered during filtering out.
-```
+Take a look at [API Documentation](https://github.com/Sahil-Gulati/NOOPath/wiki/Api-documentation)
